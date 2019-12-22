@@ -1,26 +1,17 @@
 <template>
   <div>
-    <div v-for="user in users">{{ user.title }}</div>
+    <div v-for="user in this.$store.state.news">{{ user.title }}</div>
   </div>
 </template>
 <script>
-import { fetchNewsList } from "../api/index.js";
-
 export default {
-  data() {
-    return {
-      users: []
-    };
-  },
+  // data() {
+  //   return {
+  //     users: []
+  //   };
+  // },
   created() {
-    fetchNewsList()
-      .then(res => {
-        this.users = res.data;
-        console.log(this.users);
-      })
-      .catch(error => {
-        console.log(error);
-      });
+    this.$store.dispatch("FETCH_NEWS");
   }
 };
 </script>
