@@ -12,6 +12,12 @@ export const store = new Vuex.Store({
       asks:[],
       jobs:[],
   },
+  //getters는 컴포넌트의 computed임. 더 간결하게 쓰기위해서 스토어에 명시
+  getters:{
+    fetchedAsk(state){
+        return state.asks;
+    }
+  },
   mutations:{
     SET_NEWS(state, news){
         state.news = news;
@@ -19,8 +25,8 @@ export const store = new Vuex.Store({
     SET_ASK(state, ask){
         state.asks = ask;
     },
-    SET_JOB(state, job){
-        state.jobs = job;
+    SET_JOB(state, jobs){
+        state.jobs = jobs;
     },
   },
   actions: {
@@ -44,11 +50,11 @@ export const store = new Vuex.Store({
             console.log(error);
         })
       },
-      FETCH_JOB(context){
+      FETCH_JOB({commit}){
         fetchJobsList()
         .then(res => {
             console.log(res);
-            context.commit('SET_JOB', res.data);
+            commit('SET_JOB', res.data);
         })
         .catch(error => {
             console.log(error);
