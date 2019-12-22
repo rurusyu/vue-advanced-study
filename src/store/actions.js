@@ -1,0 +1,34 @@
+import { fetchNewsList, fetchAskList, fetchJobsList} from "../api/index.js";
+
+export default {
+    FETCH_NEWS(context){
+        fetchNewsList()
+        .then(res => {
+            console.log(res);
+            context.commit('SET_NEWS', res.data);
+        })
+        .catch(error => {
+            console.log(error);
+        })
+      },
+      FETCH_ASK(context){
+        fetchAskList()
+        .then(res => {
+            console.log(res);
+            context.commit('SET_ASK', res.data);
+        })
+        .catch(error => {
+            console.log(error);
+        })
+      },
+      FETCH_JOB({commit}){
+        fetchJobsList()
+        .then(res => {
+            console.log(res);
+            commit('SET_JOB', res.data);
+        })
+        .catch(error => {
+            console.log(error);
+        })
+      },
+}

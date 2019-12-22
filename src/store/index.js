@@ -1,8 +1,8 @@
 import Vue from 'vue';
 import Vuex from 'vuex';
-import { fetchNewsList, fetchAskList, fetchJobsList} from "../api/index.js";
 
-
+import mutations from './mutations.js';
+import actions from './actions';
 
 Vue.use(Vuex)
 
@@ -12,47 +12,13 @@ export const store = new Vuex.Store({
       asks:[],
       jobs:[],
   },
-  mutations:{
-    SET_NEWS(state, news){
-        state.news = news;
-    },
-    SET_ASK(state, ask){
-        state.asks = ask;
-    },
-    SET_JOB(state, job){
-        state.jobs = job;
-    },
+  //getters는 컴포넌트의 computed임. 더 간결하게 쓰기위해서 스토어에 명시
+  getters:{
+    fetchedAsk(state){
+        return state.asks;
+    }
   },
-  actions: {
-      FETCH_NEWS(context){
-        fetchNewsList()
-        .then(res => {
-            console.log(res);
-            context.commit('SET_NEWS', res.data);
-        })
-        .catch(error => {
-            console.log(error);
-        })
-      },
-      FETCH_ASK(context){
-        fetchAskList()
-        .then(res => {
-            console.log(res);
-            context.commit('SET_ASK', res.data);
-        })
-        .catch(error => {
-            console.log(error);
-        })
-      },
-      FETCH_JOB(context){
-        fetchJobsList()
-        .then(res => {
-            console.log(res);
-            context.commit('SET_JOB', res.data);
-        })
-        .catch(error => {
-            console.log(error);
-        })
-      },
-  }
+  //mutations:mutations, //같으니깐 mutations하나로 해도됨.
+  mutations,
+  actions,
 })
