@@ -2,8 +2,19 @@
   <div class="user-container">
     <div>User</div>
     <div class="user-description">
-      <div>{{info.id}}</div>
-      <div class="time">{{info.created}}</div>
+      <slot name="username">
+        <!-- 상위컴포넌트에서 정의할 영역 -->
+      </slot>
+      <div>
+        <slot name="time">
+          <!-- 상위컴포넌트에서 정의할 영역 -->
+        </slot>
+      </div>
+    </div>
+    <div>
+      <slot name="karma">
+        <!-- 상위컴포넌트에서 정의할 영역 -->
+      </slot>
     </div>
   </div>
 </template>
