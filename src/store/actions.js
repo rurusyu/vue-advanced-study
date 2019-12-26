@@ -12,6 +12,7 @@ export default {
         .then(res => {
             console.log(res);
             context.commit('SET_NEWS', res.data);
+            return res; //spinner off해야함.
         })
         .catch(error => {
             console.log(error);
