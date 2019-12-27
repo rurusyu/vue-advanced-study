@@ -13,6 +13,7 @@ export const store = new Vuex.Store({
       jobs:[],
       user:{},
       item:[],
+      list:[],
   },
   //getters는 컴포넌트의 computed임. 더 간결하게 쓰기위해서 스토어에 명시
   getters:{

@@ -3,7 +3,8 @@ import {
     fetchAskList, 
     fetchJobsList, 
     fetchUserInfo, 
-    fetchCommentItem
+    fetchCommentItem,
+    fetchList
 } from "../api/index.js";
 
 export default {
@@ -12,6 +13,7 @@ export default {
         .then(res => {
             console.log(res);
             context.commit('SET_NEWS', res.data);
+            return res; //spinner off해야함.
         })
         .catch(error => {
             console.log(error);
@@ -57,4 +59,10 @@ export default {
             console.log(error);
         })
       },
+      FETCH_LIST({commit}, pageName){
+        fetchList(pageName)
+        .then(({data}) => commit('SET_LIST',data))
+        .catch(error => console.log(error));
+            
+        }
 }

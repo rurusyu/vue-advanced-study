@@ -30,29 +30,30 @@
 export default {
   computed: {
     listItems() {
-      const name = this.$route.name;
-      if (name === "news") {
-        return this.$store.state.news;
-      } else if (name === "ask") {
-        return this.$store.state.asks;
-      } else if (name === "jobs") {
-        return this.$store.state.jobs;
-      }
+      return this.$store.state.list;
+      // const name = this.$route.name;
+      // if (name === "news") {
+      //   return this.$store.state.news;
+      // } else if (name === "ask") {
+      //   return this.$store.state.asks;
+      // } else if (name === "jobs") {
+      //   return this.$store.state.jobs;
+      // }
     }
-  },
-  created() {
-    //공통 컴포넌트 api call 분기처리
-    const name = this.$route.name;
-    let actionName;
-    if (name === "news") {
-      actionName = "FETCH_NEWS";
-    } else if (name === "ask") {
-      actionName = "FETCH_ASK";
-    } else if (name === "jobs") {
-      actionName = "FETCH_JOB";
-    }
-    this.$store.dispatch(actionName);
   }
+  // created() {
+  //   //공통 컴포넌트 api call 분기처리
+  //   const name = this.$route.name;
+  //   let actionName;
+  //   if (name === "news") {
+  //     actionName = "FETCH_NEWS";
+  //   } else if (name === "ask") {
+  //     actionName = "FETCH_ASK";
+  //   } else if (name === "jobs") {
+  //     actionName = "FETCH_JOB";
+  //   }
+  //   this.$store.dispatch(actionName);
+  // }
 };
 </script>
 <style scoped>

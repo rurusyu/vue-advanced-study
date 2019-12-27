@@ -6,7 +6,7 @@
 <script>
 // import { mapState, mapGetters } from "vuex";
 import ListItem from "../components/ListItem.vue";
-
+import Bus from "../utils/bus.js";
 export default {
   components: {
     ListItem
@@ -29,7 +29,17 @@ export default {
   },
 
   created() {
-    this.$store.dispatch("FETCH_ASK");
+    Bus.$emit("start:spinner");
+    setTimeout(() => {
+      this.$store
+        .dispatch("FETCH_ASK")
+        .then(() => {
+          Bus.$emit("end:spinner");
+        })
+        .catch(error => {
+          console.log(error);
+        });
+    }, 3000);
   }
 };
 </script>
