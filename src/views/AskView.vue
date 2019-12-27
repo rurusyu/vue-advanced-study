@@ -26,21 +26,21 @@ export default {
     //ask(){
     //return this.$store.state.asks
     //}
-  },
-
-  created() {
-    Bus.$emit("start:spinner");
-    setTimeout(() => {
-      this.$store
-        .dispatch("FETCH_ASK")
-        .then(() => {
-          Bus.$emit("end:spinner");
-        })
-        .catch(error => {
-          console.log(error);
-        });
-    }, 3000);
   }
+
+  // created() {
+  //   Bus.$emit("start:spinner");
+  //   setTimeout(() => {
+  //     this.$store
+  //       .dispatch("FETCH_ASK")
+  //       .then(() => {
+  //         Bus.$emit("end:spinner");
+  //       })
+  //       .catch(error => {
+  //         console.log(error);
+  //       });
+  //   }, 3000);
+  // }
 };
 </script>
 
