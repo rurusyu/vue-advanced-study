@@ -6,11 +6,13 @@
 <script>
 // import { mapState, mapGetters } from "vuex";
 import ListItem from "../components/ListItem.vue";
-import Bus from "../utils/bus.js";
+import ListMixins from "../mixins/ListMixin.js";
+
 export default {
   components: {
     ListItem
   },
+  mixins:[ListMixins],
   computed: {
     //# 4
     // ...mapGetters(["fetchedAsk"])
