@@ -7,10 +7,7 @@ import UserView from "../views/UserView.vue";
 import ItemView from "../views/ItemView.vue";
 // import createListView from "../views/CreateListView.js";
 import Bus from "../utils/bus.js";
-<<<<<<< HEAD
-=======
 import { store } from '../store/index.js';
->>>>>>> 08ab6db8f0a2af6acde4c5ce88ed242560c19f24
 
 Vue.use(VueRouter);
 
@@ -27,21 +24,21 @@ export const router = new VueRouter({
       path: "/news",
       name: "news",
       component: NewsView,
-      beforeEnter: (to, from, next) =>{
-        console.log('to', to);
-        console.log('from', from);
-        console.log('next', next);
+      // beforeEnter: (to, from, next) =>{
+      //   console.log('to', to);
+      //   console.log('from', from);
+      //   console.log('next', next);
         
-        this.$store
-        .dispatch("FETCH_LIST", this.$route.name)
-        .then(() => {
-            console.log(5);
-          Bus.$emit("end:spinner");
-        })
-        .catch(error => {
-          console.log(error);
-        });
-      }
+      //   this.$store
+      //   .dispatch("FETCH_LIST", this.$route.name)
+      //   .then(() => {
+      //       console.log(5);
+      //     Bus.$emit("end:spinner");
+      //   })
+      //   .catch(error => {
+      //     console.log(error);
+      //   });
+      // }
       // component: createListView("NewsView") //하이오더 컴포넌트 적용
       beforeEnter: (to,from,next) => {
        
