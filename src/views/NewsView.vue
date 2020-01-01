@@ -12,7 +12,7 @@ export default {
     ListItem
   },
 
-  mixins:[ListMixins],
+  mixins: [ListMixins],
 
   //HOC 적용으로 인한 불필요.
   // created() {
@@ -28,6 +28,8 @@ export default {
   //       });
   //   }, 3000);
   // },
-  mounted() {}
+  mounted() {
+    console.log("3");
+  }
 };
 </script>
