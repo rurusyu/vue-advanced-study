@@ -27,7 +27,6 @@ export const router = new VueRouter({
       path: "/news",
       name: "news",
       component: NewsView,
-<<<<<<< HEAD
       beforeEnter: (to, from, next) =>{
         console.log('to', to);
         console.log('from', from);
@@ -43,8 +42,6 @@ export const router = new VueRouter({
           console.log(error);
         });
       }
-=======
->>>>>>> 08ab6db8f0a2af6acde4c5ce88ed242560c19f24
       // component: createListView("NewsView") //하이오더 컴포넌트 적용
       beforeEnter: (to,from,next) => {
        

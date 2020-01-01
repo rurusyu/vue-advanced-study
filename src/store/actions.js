@@ -44,11 +44,7 @@ export default {
         })
       },
       FETCH_JOB({commit}){
-<<<<<<< HEAD
        return fetchJobsList()
-=======
-        return fetchJobsList()
->>>>>>> 08ab6db8f0a2af6acde4c5ce88ed242560c19f24
         .then(res => {
             console.log(res);
             commit('SET_JOB', res.data);
@@ -58,11 +54,7 @@ export default {
         })
       },
       FETCH_USER({commit}, name){
-<<<<<<< HEAD
        return fetchUserInfo(name)
-=======
-        return fetchUserInfo(name)
->>>>>>> 08ab6db8f0a2af6acde4c5ce88ed242560c19f24
         .then( ({data}) => {
            
             commit('SET_USER', data);
