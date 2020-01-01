@@ -7,6 +7,10 @@ import UserView from "../views/UserView.vue";
 import ItemView from "../views/ItemView.vue";
 // import createListView from "../views/CreateListView.js";
 import Bus from "../utils/bus.js";
+<<<<<<< HEAD
+=======
+import { store } from '../store/index.js';
+>>>>>>> 08ab6db8f0a2af6acde4c5ce88ed242560c19f24
 
 Vue.use(VueRouter);
 
@@ -23,6 +27,7 @@ export const router = new VueRouter({
       path: "/news",
       name: "news",
       component: NewsView,
+<<<<<<< HEAD
       beforeEnter: (to, from, next) =>{
         console.log('to', to);
         console.log('from', from);
@@ -38,18 +43,54 @@ export const router = new VueRouter({
           console.log(error);
         });
       }
+=======
+>>>>>>> 08ab6db8f0a2af6acde4c5ce88ed242560c19f24
       // component: createListView("NewsView") //하이오더 컴포넌트 적용
+      beforeEnter: (to,from,next) => {
+       
+        Bus.$emit("start:spinner");
+        setTimeout(() => {
+          store
+            .dispatch("FETCH_LIST", to.name)
+            .then(() => {next()})
+            .catch(error => {
+              console.log(error);
+            });
+        }, 3000);
+      },
     },
     {
       path: "/jobs",
       name: "jobs",
-      component: JobsView
+      component: JobsView,
+      beforeEnter: (to,from,next) => {
+        Bus.$emit("start:spinner");
+        setTimeout(() => {
+          store
+            .dispatch("FETCH_LIST", to.name)
+            .then(() => next())
+            .catch(error => {
+              console.log(error);
+            });
+        }, 3000);
+      },
       // component: createListView("JobsView")
     },
     {
       path: "/ask",
       name: "ask",
-      component: AskView
+      component: AskView,
+      beforeEnter: (to,from,next) => {
+        Bus.$emit("start:spinner");
+        setTimeout(() => {
+          store
+            .dispatch("FETCH_LIST", to.name)
+            .then(() => next())
+            .catch(error => {
+              console.log(error);
+            });
+        }, 3000);
+      },
       // component: createListView("AskView")
     },
     {

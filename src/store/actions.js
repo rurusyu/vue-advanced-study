@@ -8,6 +8,7 @@ import {
 } from "../api/index.js";
 
 export default {
+<<<<<<< HEAD
     FETCH_NEWS(context){
        return fetchNewsList()
         .then(res => {
@@ -18,9 +19,22 @@ export default {
         .catch(error => {
             console.log(error);
         })
+=======
+      //# async await
+      async FETCH_NEWS(context){
+        const response = await fetchNewsList();
+        context.commit('SET_NEWS',response.data);
+        return response;
+>>>>>>> 08ab6db8f0a2af6acde4c5ce88ed242560c19f24
       },
+
+
       FETCH_ASK(context){
+<<<<<<< HEAD
        return fetchAskList()
+=======
+        return fetchAskList()
+>>>>>>> 08ab6db8f0a2af6acde4c5ce88ed242560c19f24
         .then(res => {
             console.log(res);
             context.commit('SET_ASK', res.data);
@@ -30,7 +44,11 @@ export default {
         })
       },
       FETCH_JOB({commit}){
+<<<<<<< HEAD
        return fetchJobsList()
+=======
+        return fetchJobsList()
+>>>>>>> 08ab6db8f0a2af6acde4c5ce88ed242560c19f24
         .then(res => {
             console.log(res);
             commit('SET_JOB', res.data);
@@ -40,7 +58,11 @@ export default {
         })
       },
       FETCH_USER({commit}, name){
+<<<<<<< HEAD
        return fetchUserInfo(name)
+=======
+        return fetchUserInfo(name)
+>>>>>>> 08ab6db8f0a2af6acde4c5ce88ed242560c19f24
         .then( ({data}) => {
            
             commit('SET_USER', data);
@@ -61,10 +83,14 @@ export default {
       },
       FETCH_LIST({commit}, pageName){
         return fetchList(pageName)
+<<<<<<< HEAD
         .then(({data}) => {
             console.log(4);
             commit('SET_LIST',data)
         })
+=======
+        .then(({data}) => commit('SET_LIST',data))
+>>>>>>> 08ab6db8f0a2af6acde4c5ce88ed242560c19f24
         .catch(error => console.log(error));
             
         }
