@@ -6,6 +6,7 @@ import JobsView from "../views/JobsView.vue";
 import UserView from "../views/UserView.vue";
 import ItemView from "../views/ItemView.vue";
 // import createListView from "../views/CreateListView.js";
+import Bus from "../utils/bus.js";
 
 Vue.use(VueRouter);
 
@@ -21,7 +22,22 @@ export const router = new VueRouter({
       //component : url 주소로 갔을때 컴포넌트
       path: "/news",
       name: "news",
-      component: NewsView
+      component: NewsView,
+      beforeEnter: (to, from, next) =>{
+        console.log('to', to);
+        console.log('from', from);
+        console.log('next', next);
+        
+        this.$store
+        .dispatch("FETCH_LIST", this.$route.name)
+        .then(() => {
+            console.log(5);
+          Bus.$emit("end:spinner");
+        })
+        .catch(error => {
+          console.log(error);
+        });
+      }
       // component: createListView("NewsView") //하이오더 컴포넌트 적용
     },
     {
